@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MQTT WebSocket Client</title>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>MQTT WebSocket Client Showcase</h1>
+  </div>
+</header>
+<section>
+  <div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">
+          <div class="row">
+            <div class="col-md-8">
+              <a data-toggle="collapse" href="#connectionContent" aria-expanded="true"
+                 aria-controls="connectionContent" style="color: inherit;">
+                Connection
+              </a>
+            </div>
+            <div class="col-md-4">
+              <span id="state">
+                <i class="icon glyphicon-globe"></i>
+                <span class="text">disconnected</span>
+              </span>
+            </div>
+          </div>
+        </h2>
+      </div>
+      <div id="connectionContent" class="panel-collapse collapse in">
+        <div class="panel-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
+          wolf moon
+          officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+          Brunch 3 wolf
+          moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+          Nihil anim
+          keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan
+          excepteur
+          butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt
+          you probably
+          haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">
+              <a data-toggle="collapse" href="#publish" aria-expanded="true"
+                 aria-controls="connectionContent">
+                Publish
+              </a>
+            </h2>
+          </div>
+          <div id="publish" class="panel-collapse collapse in">
+            <div class="panel-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+              squid. 3 wolf
+              moon
+              officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+              eiusmod. Brunch 3
+              wolf
+              moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+              shoreditch et. Nihil
+              anim
+              keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad
+              vegan excepteur
+              butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+              nesciunt you
+              probably
+              haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">
+              <a data-toggle="collapse" href="#messages" aria-expanded="true"
+                 aria-controls="connectionContent">
+                Messages
+              </a>
+            </h2>
+          </div>
+          <div id="messages" class="panel-collapse collapse in">
+            <div class="panel-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+              squid. 3 wolf
+              moon
+              officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+              eiusmod. Brunch 3
+              wolf
+              moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+              shoreditch et. Nihil
+              anim
+              keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad
+              vegan excepteur
+              butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+              nesciunt you
+              probably
+              haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h2 class="panel-title">
+              <a data-toggle="collapse" href="#subscriptions" aria-expanded="true"
+                 aria-controls="connectionContent">
+                Subscriptions
+              </a>
+            </h2>
+          </div>
+          <div id="subscriptions" class="panel-collapse collapse in">
+            <div class="panel-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+              squid. 3 wolf
+              moon
+              officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+              eiusmod. Brunch 3
+              wolf
+              moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+              shoreditch et. Nihil
+              anim
+              keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad
+              vegan excepteur
+              butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+              nesciunt you
+              probably
+              haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="./lib/mqtt-2.11.0.min.js"></script>
+<script src="./main.js"></script>
+</body>
+</html>
