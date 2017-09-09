@@ -23,12 +23,12 @@ header {
     font-family: Glyphicons Halflings !important;
 }
 
-.button-align {
-    margin-top: 23px;
+.color-red {
+    color: #f04134;
 }
 
-#state > .icon {
-    color: #f04134;
+.button-align {
+    margin-top: 23px;
 }
 
 #state > .icon:before {
