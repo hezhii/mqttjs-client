@@ -42,35 +42,35 @@
       </div>
       <div id="connectionContent" class="panel-collapse collapse in">
         <div class="panel-body">
-          <form action="">
+          <form>
             <div class="container-fluid">
               <div class="row">
                 <div class="col-md-5 form-group">
-                  <label for="hostInput">Host</label>
-                  <input class="form-control" id="hostInput" value="test.mosca.io">
+                  <label for="host">Host</label>
+                  <input class="form-control" id="host" value="test.mosca.io">
                 </div>
                 <div class="col-md-2 form-group">
-                  <label for="portInput">Port</label>
-                  <input class="form-control" id="portInput" value="80">
+                  <label for="port">Port</label>
+                  <input class="form-control" id="port" value="80">
                 </div>
                 <div class="col-md-3 form-group">
-                  <label for="clientIdInput">ClientID</label>
-                  <input class="form-control" id="clientIdInput">
+                  <label for="clientId">ClientID</label>
+                  <input class="form-control" id="clientId">
                 </div>
                 <div class="col-md-2 form-group">
-                  <button id="connectButton" class="btn btn-primary">Connect</button>
+                  <button id="connectButton" class="btn btn-primary button-align">Connect</button>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-4 form-group">
-                  <label for="userInput">Username</label>
-                  <input class="form-control" id="userInput"></div>
+                  <label for="username">Username</label>
+                  <input class="form-control" id="username"></div>
                 <div class="col-md-4 form-group">
-                  <label for="pwdInput">Password</label>
-                  <input class="form-control" id="pwdInput"></div>
+                  <label for="password">Password</label>
+                  <input class="form-control" id="password"></div>
                 <div class="col-md-2 form-group">
-                  <label for="keepAliveInput">KeepAlive</label>
-                  <input class="form-control" id="keepAliveInput"></div>
+                  <label for="keepAlive">KeepAlive</label>
+                  <input class="form-control" id="keepAlive"></div>
               </div>
             </div>
           </form>
@@ -89,21 +89,37 @@
           </div>
           <div id="publish" class="panel-collapse collapse in">
             <div class="panel-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-              squid. 3 wolf
-              moon
-              officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-              eiusmod. Brunch 3
-              wolf
-              moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-              shoreditch et. Nihil
-              anim
-              keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad
-              vegan excepteur
-              butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-              nesciunt you
-              probably
-              haven't heard of them accusamus labore sustainable VHS.
+              <form>
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <label for="publishTopic">Topic</label>
+                      <input class="form-control" id="publishTopic" value="test/topic/1">
+                    </div>
+                    <div class="col-md-2 form-group">
+                      <label for="publishQoS">QoS</label>
+                      <select class="form-control" name="publishQoS" id="publishQoS">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2 form-group">
+                      <label for="publishRetain">Retain</label>
+                      <input type="checkbox" id="publishRetain">
+                    </div>
+                    <div class="col-md-2 form-group">
+                      <button id="publishButton" class="btn btn-primary button-align">Publish</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <label for="publishPayload">Message</label>
+                      <textarea class="form-control" id="publishPayload"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>

@@ -23,6 +23,10 @@ header {
     font-family: Glyphicons Halflings !important;
 }
 
+.button-align {
+    margin-top: 23px;
+}
+
 #state > .icon {
     color: #f04134;
 }
@@ -31,8 +35,9 @@ header {
     vertical-align: text-bottom;
 }
 
-#connectButton {
-    margin-top: 23px;
+#publishRetain {
+    display: block;
+    margin-top: 10px;
 }
 
 
