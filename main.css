@@ -27,6 +27,10 @@ header {
     color: #f04134;
 }
 
+.color-green {
+    color: #5cb85c;
+}
+
 .button-align {
     margin-top: 23px;
 }

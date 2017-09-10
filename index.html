@@ -43,20 +43,20 @@
       </div>
       <div id="connectionContent" class="panel-collapse collapse in">
         <div class="panel-body">
-          <form>
+          <form id="connectionForm">
             <div class="container-fluid">
               <div class="row">
                 <div class="col-md-5 form-group">
                   <label for="host">Host</label>
-                  <input class="form-control" id="host" value="test.mosca.io">
+                  <input class="form-control" id="host" name="host" value="broker.mqttdashboard.com">
                 </div>
                 <div class="col-md-2 form-group">
                   <label for="port">Port</label>
-                  <input class="form-control" id="port" value="80">
+                  <input class="form-control" id="port" name="port" value="8000">
                 </div>
                 <div class="col-md-3 form-group">
                   <label for="clientId">ClientID</label>
-                  <input class="form-control" id="clientId">
+                  <input class="form-control" id="clientId" name="clientId">
                 </div>
                 <div class="col-md-2 form-group">
                   <button id="connectButton" class="btn btn-primary button-align">Connect</button>
