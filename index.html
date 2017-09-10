@@ -154,7 +154,7 @@
           </div>
           <div id="subscriptions" class="panel-collapse collapse in">
             <div class="panel-body">
-              <form>
+              <form id="subscriptionForm">
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-md-2 form-group">
@@ -164,11 +164,11 @@
                   <div class="row">
                     <div class="col-md-4">
                       <label for="subscribeTopic">Topic</label>
-                      <input class="form-control" id="subscribeTopic">
+                      <input class="form-control" name="subscribeTopic" id="subscribeTopic">
                     </div>
                     <div class="col-md-4">
                       <label for="subscribeQoS">QoS</label>
-                      <select class="form-control" name="publishQoS" id="subscribeQoS">
+                      <select class="form-control" name="subscribeQoS" id="subscribeQoS">
                         <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -176,7 +176,7 @@
                     </div>
                     <div class="col-md-4">
                       <label for="color">Color</label>
-                      <input id="color" class="form-control" value="#f00"/>
+                      <input id="color" class="form-control" name="color" value="#f00"/>
                     </div>
                   </div>
                 </div>
@@ -184,19 +184,12 @@
               <table class="table table-hover">
                 <thead>
                 <tr>
-                  <th>Num</th>
                   <th>Topic</th>
                   <th>Color</th>
                   <th>Qos</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>test/topic/1</td>
-                  <td>Red</td>
-                  <td>1</td>
-                </tr>
                 </tbody>
               </table>
             </div>
