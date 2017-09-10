@@ -23,6 +23,11 @@ header {
     font-family: Glyphicons Halflings !important;
 }
 
+ul {
+    padding: 0;
+    list-style: none;
+}
+
 .color-red {
     color: #f04134;
 }
@@ -48,5 +53,24 @@ td > i {
     display: block;
     width: 16px;
     height: 16px;
+}
+
+.messages-list li {
+    margin-bottom: 10px;
+}
+
+.messages-list .message {
+    border: solid 1px #cccccc;
+}
+
+.message .small-text {
+    color: #bababa;
+    font-size: 12px;
+}
+
+.message .message-content {
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    font-size: 18px;
 }
 
