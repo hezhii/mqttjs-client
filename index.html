@@ -90,12 +90,12 @@
           </div>
           <div id="publish" class="panel-collapse collapse in">
             <div class="panel-body">
-              <form>
+              <form id="publishForm">
                 <div class="container-fluid">
                   <div class="row">
                     <div class="col-md-6 form-group">
                       <label for="publishTopic">Topic</label>
-                      <input class="form-control" id="publishTopic" value="test/topic/1">
+                      <input class="form-control" name="publishTopic" id="publishTopic" value="test/topic/1">
                     </div>
                     <div class="col-md-2 form-group">
                       <label for="publishQoS">QoS</label>
@@ -107,7 +107,7 @@
                     </div>
                     <div class="col-md-2 form-group">
                       <label for="publishRetain">Retain</label>
-                      <input type="checkbox" id="publishRetain">
+                      <input type="checkbox" id="publishRetain" name="publishRetain">
                     </div>
                     <div class="col-md-2 form-group">
                       <button id="publishButton" class="btn btn-primary button-align">Publish</button>
@@ -115,8 +115,8 @@
                   </div>
                   <div class="row">
                     <div class="col-md-12 form-group">
-                      <label for="publishPayload">Message</label>
-                      <textarea class="form-control" id="publishPayload"></textarea>
+                      <label for="publishMessage">Message</label>
+                      <textarea class="form-control" id="publishMessage" name="publishMessage"></textarea>
                     </div>
                   </div>
                 </div>
@@ -164,7 +164,7 @@
                   <div class="row">
                     <div class="col-md-4">
                       <label for="subscribeTopic">Topic</label>
-                      <input class="form-control" name="subscribeTopic" id="subscribeTopic">
+                      <input class="form-control" name="subscribeTopic" id="subscribeTopic" value="test/topic/#">
                     </div>
                     <div class="col-md-4">
                       <label for="subscribeQoS">QoS</label>

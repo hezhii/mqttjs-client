@@ -1,4 +1,4 @@
-let connectionForm, subscriptionForm, state, tbody;
+let connectionForm, subscriptionForm, publishForm, state, tbody;
 
 let client;
 
@@ -6,6 +6,7 @@ $(function () {
   $('#color').colorpicker();
   $('#connectButton').click(handleConnect);
   $('#subscribeButton').click(handleSubscribe);
+  $('#publishButton').click(handlePublish);
 });
 
 function handleConnect(event) {
@@ -24,6 +25,12 @@ function handleConnect(event) {
     state.children('span').text('connected');
   });
 
+  client.on('error', function (err) {
+    alert('There has some problems when create connection!\n Error is:' + err.message);
+  });
+
+  client.on('message', handleMessage);
+
   event.preventDefault();
 }
 
@@ -40,7 +47,7 @@ function handleSubscribe(event) {
   if (client) {
     client.subscribe(topic, {'qos': parseInt(qos)}, function (err) {
       if (err) {
-        alert(`There has some problems when subscribe topic "${formData.topic}"!\nError:${err}`);
+        alert(`There has some problems when subscribe topic "${formData.topic}"!\nError:${err.message}`);
       } else {
         tbody = tbody || $('tbody');
         tbody.append(`<tr><td>${topic}</td><td><i style="background: ${color}"></i></td><td>${qos}</td></tr>`);
@@ -51,6 +58,33 @@ function handleSubscribe(event) {
   }
 
   event.preventDefault();
+}
+
+function handlePublish() {
+  publishForm = publishForm || $('#publishForm');
+  const formData = convertFormData(publishForm.serializeArray());
+
+  const {
+    publishTopic: topic,
+    publishQoS: qos,
+    publishRetain: retain,
+    publishMessage: msg
+  } = formData;
+
+  if (client) {
+    client.publish(topic, msg, {
+      'qos': parseInt(qos),
+      'retain': retain === 'on' ? true : false
+    });
+  } else {
+    alert('You have to create connection first!');
+  }
+  event.preventDefault();
+}
+
+
+function handleMessage(topic, msg) {
+  console.log(msg);
 }
 
 /**
