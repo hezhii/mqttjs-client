@@ -1,6 +1,8 @@
-let connectionForm, subscriptionForm, publishForm, state, tbody;
+let connectionForm, subscriptionForm, publishForm, state, tbody, messageList;
 
 let client;
+
+const TOPIC_COLOR_MAP = {};
 
 $(function () {
   $('#color').colorpicker();
@@ -49,6 +51,7 @@ function handleSubscribe(event) {
       if (err) {
         alert(`There has some problems when subscribe topic "${formData.topic}"!\nError:${err.message}`);
       } else {
+        TOPIC_COLOR_MAP[topic] = color;
         tbody = tbody || $('tbody');
         tbody.append(`<tr><td>${topic}</td><td><i style="background: ${color}"></i></td><td>${qos}</td></tr>`);
       }
@@ -74,7 +77,7 @@ function handlePublish() {
   if (client) {
     client.publish(topic, msg, {
       'qos': parseInt(qos),
-      'retain': retain === 'on' ? true : false
+      'retain': retain === 'on'
     });
   } else {
     alert('You have to create connection first!');
@@ -83,8 +86,23 @@ function handlePublish() {
 }
 
 
-function handleMessage(topic, msg) {
-  console.log(msg);
+function handleMessage(topic, msg, packet) {
+  messageList = messageList || $('#messageList');
+  messageList.append(`<li style="border-left: solid 10px ${TOPIC_COLOR_MAP[topic]};">
+                  <div class="container-fluid message">
+                    <div class="row small-text">
+                      <div class="col-md-3">${new Date().toLocaleDateString()}</div>
+                      <div class="col-md-5">Topic: ${topic}</div>
+                      <div class="col-md-2">Qos: ${packet.qos}</div>
+                      <div class="col-md-2">Retain: ${packet.retain}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 message-content">
+                        ${msg}
+                      </div>
+                    </div>
+                  </div>
+                </li>`);
 }
 
 /**
