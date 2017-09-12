@@ -88,7 +88,7 @@ function handlePublish() {
 
 function handleMessage(topic, msg, packet) {
   messageList = messageList || $('#messageList');
-  messageList.append(`<li style="border-left: solid 10px ${TOPIC_COLOR_MAP[topic]};">
+  messageList.append(`<li style="border-left: solid 10px ${getColorForSubscription(topic)};">
                   <div class="container-fluid message">
                     <div class="row small-text">
                       <div class="col-md-3">${new Date().toLocaleDateString()}</div>
@@ -107,6 +107,7 @@ function handleMessage(topic, msg, packet) {
 
 /**
  * 将 jQuery 序列化后的表单数据数组转换为对象
+ *
  * @param {Array} arr
  * @return {Object}
  */
@@ -121,5 +122,30 @@ function convertFormData(arr) {
     }
   });
   return obj;
+}
+
+/**
+ * 获取订阅主题相应的颜色
+ *
+ * @param {String} topic - 主题
+ */
+function getColorForSubscription(topic) {
+  for (let _topic in TOPIC_COLOR_MAP) {
+    if (this.containTopic(_topic, topic)) {
+      return TOPIC_COLOR_MAP[_topic];
+    }
+  }
+}
+
+/**
+ * 判断一个主题是否包含另外一个主题
+ *
+ * @param {String} topic -父主题
+ * @param {String} subTopic - 子主题
+ */
+function containTopic(topic, subTopic) {
+  var pattern = topic.replace("+", "(.+?)").replace("#", "(.*)");
+  var regex = new RegExp("^" + pattern + "$");
+  return regex.test(subTopic);
 }
 
