@@ -1,11 +1,12 @@
-let connectionForm, subscriptionForm, publishForm, state, tbody, messageList;
+let connectionForm, subscriptionForm, publishForm, state, tbody, messageList, colorPicker;
 
 let client;
 
 const TOPIC_COLOR_MAP = {};
 
 $(function () {
-  $('#color').colorpicker();
+  colorPicker = $('#color');
+  colorPicker.colorpicker();
   $('#connectButton').click(handleConnect);
   $('#subscribeButton').click(handleSubscribe);
   $('#publishButton').click(handlePublish);
@@ -54,6 +55,7 @@ function handleSubscribe(event) {
         TOPIC_COLOR_MAP[topic] = color;
         tbody = tbody || $('tbody');
         tbody.append(`<tr><td>${topic}</td><td><i style="background: ${color}"></i></td><td>${qos}</td></tr>`);
+        colorPicker.colorpicker('setValue', getRandomColor());
       }
     });
   } else {
@@ -144,8 +146,14 @@ function getColorForSubscription(topic) {
  * @param {String} subTopic - 子主题
  */
 function containTopic(topic, subTopic) {
-  var pattern = topic.replace("+", "(.+?)").replace("#", "(.*)");
-  var regex = new RegExp("^" + pattern + "$");
+  let pattern = topic.replace("+", "(.+?)").replace("#", "(.*)");
+  let regex = new RegExp("^" + pattern + "$");
   return regex.test(subTopic);
 }
 
+function getRandomColor() {
+  let r = (Math.round(Math.random() * 255)).toString(16);
+  let g = (Math.round(Math.random() * 255)).toString(16);
+  let b = (Math.round(Math.random() * 255)).toString(16);
+  return r + g + b;
+}
