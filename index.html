@@ -154,7 +154,13 @@
               <form id="subscriptionForm">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-12 form-group">
+                      <label for="subscribeTopic">Topic</label>
+                      <input class="form-control" name="subscribeTopic" id="subscribeTopic" value="test/topic/#">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 form-group">
                       <label for="subscribeQoS">QoS</label>
                       <select class="form-control" name="subscribeQoS" id="subscribeQoS">
                         <option value="0">0</option>
@@ -162,18 +168,12 @@
                         <option value="2">2</option>
                       </select>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 form-group">
                       <label for="color">Color</label>
                       <input id="color" class="form-control" name="color" value="#f00"/>
                     </div>
                     <div class="col-md-4 form-group">
                       <button id="subscribeButton" class="btn btn-primary button-align">Subscribe</button>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <label for="subscribeTopic">Topic</label>
-                      <input class="form-control" name="subscribeTopic" id="subscribeTopic" value="test/topic/#">
                     </div>
                   </div>
                 </div>
