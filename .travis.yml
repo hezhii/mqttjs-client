@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+branches:
+  only:
+  - master
+deploy:
+  provider: pages
+  skip_cleanup: true
+  on:
+    branch: master
+  github_token:
+    secure: dWd1NkXH/koPEKy9lY0O+QMif88je59A/E/bfXfwSAq7so28j0fbCpoup3JOIghF+3RDs254+sDincutxJ3XGxkGIqLkEOivBJGCyFn9BJl9sM5D5E9trCc7/ZiPFx3B/bxWwctEMU1G1kbPb4UnHULD5QBBsDSto2D1Qh/9nL07b/qFFs/A9TWo8t93XDGjlUi+Tel7QPX9WrLx/+Bi3VO5gGBSNmziYGjZbiEUummOukzPpmnY7KlPP9L60k220Mpuxk816u1CJk5poWdVkF86f5iSiMwpQtX9DWpqchCv9aYCGdWQu6mbpU/vXvbcl90uL5rGsC2jhOCYEgjaMqxHTbkzE2tUIHNiDQ0WGbb8ohRuXjhXqMeksShVL6CtyeyDjtBsdnSI870Bzn7ECMSHnZn6UZVgftYtYJM96Zo0epGFqIJSPzFPBz/OXkOsLCJwItcBkFcVie/RrCRRmWV2uJP9p8+TrTY2xrMz+E4/cGZt+v/hh4mkvslifdxCdyBJdtDmkD6leAtlqS8aYFNMcLoNZ0SVEPi+b1ZQjAgWHUyvGPTR0PcfssEVJ/cH9+obXWtQjgJN0gRFALL8226tIQUNN5HiWIUVhn4icjBZYfi6bEJXJerrO+FdT7LxYP/94AbTQWUj/hkcOsBj8jdXMiZHOuEoD+nmDl+rOYI=
