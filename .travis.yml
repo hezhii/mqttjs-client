@@ -1,12 +1,20 @@
 language: node_js
-node_js:
+node_js: 
 branches:
   only:
   - master
-deploy:
-  provider: pages
-  skip_cleanup: true
-  on:
-    branch: master
-  github_token:
-    secure: dWd1NkXH/koPEKy9lY0O+QMif88je59A/E/bfXfwSAq7so28j0fbCpoup3JOIghF+3RDs254+sDincutxJ3XGxkGIqLkEOivBJGCyFn9BJl9sM5D5E9trCc7/ZiPFx3B/bxWwctEMU1G1kbPb4UnHULD5QBBsDSto2D1Qh/9nL07b/qFFs/A9TWo8t93XDGjlUi+Tel7QPX9WrLx/+Bi3VO5gGBSNmziYGjZbiEUummOukzPpmnY7KlPP9L60k220Mpuxk816u1CJk5poWdVkF86f5iSiMwpQtX9DWpqchCv9aYCGdWQu6mbpU/vXvbcl90uL5rGsC2jhOCYEgjaMqxHTbkzE2tUIHNiDQ0WGbb8ohRuXjhXqMeksShVL6CtyeyDjtBsdnSI870Bzn7ECMSHnZn6UZVgftYtYJM96Zo0epGFqIJSPzFPBz/OXkOsLCJwItcBkFcVie/RrCRRmWV2uJP9p8+TrTY2xrMz+E4/cGZt+v/hh4mkvslifdxCdyBJdtDmkD6leAtlqS8aYFNMcLoNZ0SVEPi+b1ZQjAgWHUyvGPTR0PcfssEVJ/cH9+obXWtQjgJN0gRFALL8226tIQUNN5HiWIUVhn4icjBZYfi6bEJXJerrO+FdT7LxYP/94AbTQWUj/hkcOsBj8jdXMiZHOuEoD+nmDl+rOYI=
+before_install:
+- openssl aes-256-cbc -K $encrypted_aba867268067_key -iv $encrypted_aba867268067_iv
+  -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
+before_script:
+  - chmod 600 ~/.ssh/id_rsa
+  - eval $(ssh-agent)
+  - ssh-add ~/.ssh/id_rsa
+  - cp .travis/ssh_config ~/.ssh/config
+  - git config --global user.name "biu"
+  - git config --global user.email "hezhou920@gmail.com"
+script:
+  - git branch coding-pages
+  - git branch gh-pages
+  - git push --force git@git.coding.net:hezhou/mqttjs-client.git coding-pages:coding-pages
+  - git push --force git@github.com:hezhii/mqttjs-client.git gh-pages:gh-pages
