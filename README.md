@@ -4,7 +4,7 @@ This is a MQTT websocket client demo using mqtt.js. You can use it to test conne
 
 ## How to use
 
-You can visit the [http://www.whezh.com/mqttjs-client](http://www.whezh.com/mqttjs-client) directly.
+You can visit the [https://hezhii.github.io/mqttjs-client](http://www.whezh.com/mqttjs-client) directly.
 
 On that page, you can test connect to MQTT broker. After connected, you can subscribe a topic and publish a message to the topic.Then you will receive the message that you just published.
 
