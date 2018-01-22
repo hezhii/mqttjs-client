@@ -7,14 +7,14 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_aba867268067_key -iv $encrypted_aba867268067_iv
   -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
 before_script:
-  - chmod 600 ~/.ssh/id_rsa
-  - eval $(ssh-agent)
-  - ssh-add ~/.ssh/id_rsa
-  - cp .travis/ssh_config ~/.ssh/config
-  - git config --global user.name "biu"
-  - git config --global user.email "hezhou920@gmail.com"
+- chmod 600 ~/.ssh/id_rsa
+- eval $(ssh-agent)
+- ssh-add ~/.ssh/id_rsa
+- cp .travis/ssh_config ~/.ssh/config
+- git config --global user.name "biu"
+- git config --global user.email "hezhou920@gmail.com"
 script:
-  - git branch coding-pages
-  - git branch gh-pages
-  - git push --force git@git.coding.net:hezhou/mqttjs-client.git coding-pages:coding-pages
-  - git push --force git@github.com:hezhii/mqttjs-client.git gh-pages:gh-pages
+- git branch coding-pages
+- git branch gh-pages
+- git push --force git@git.coding.net:hezhou/mqttjs-client.git coding-pages:coding-pages
+- git push --force git@github.com:hezhii/mqttjs-client.git gh-pages:gh-pages
