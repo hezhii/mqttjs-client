@@ -34,7 +34,7 @@ function handleConnect(event) {
 
   client.on('message', handleMessage);
 
-  event.preventDefault();
+  return false;
 }
 
 function handleSubscribe(event) {
@@ -48,7 +48,7 @@ function handleSubscribe(event) {
   } = formData;
 
   if (client) {
-    client.subscribe(topic, {'qos': parseInt(qos)}, function (err) {
+    client.subscribe(topic, { 'qos': parseInt(qos) }, function (err) {
       if (err) {
         alert(`There has some problems when subscribe topic "${formData.topic}"!\nError:${err.message}`);
       } else {
@@ -146,8 +146,8 @@ function getColorForSubscription(topic) {
  * @param {String} subTopic - 子主题
  */
 function containTopic(topic, subTopic) {
-  let pattern = topic.replace("+", "(.+?)").replace("#", "(.*)");
-  let regex = new RegExp("^" + pattern + "$");
+  let pattern = topic.replace('+', '(.+?)').replace('#', '(.*)');
+  let regex = new RegExp('^' + pattern + '$');
   return regex.test(subTopic);
 }
 
