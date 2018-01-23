@@ -16,7 +16,8 @@ function handleConnect(event) {
   connectionForm = connectionForm || $('#connectionForm');
   const formData = convertFormData(connectionForm.serializeArray());
 
-  client = mqtt.connect(`ws://${formData.host}:${formData.port}/mqtt`, {
+  const protol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+  client = mqtt.connect(`${protol}://${formData.host}:${formData.port}/mqtt`, {
     username: formData.username,
     password: formData.password,
     clientId: formData.clientId
