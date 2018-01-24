@@ -1,6 +1,6 @@
 let connectionForm, subscriptionForm, publishForm, state, tbody, messageList, colorPicker;
 
-let client;
+let client, protol;
 
 const TOPIC_COLOR_MAP = {};
 
@@ -10,14 +10,22 @@ $(function () {
   $('#connectButton').click(handleConnect);
   $('#subscribeButton').click(handleSubscribe);
   $('#publishButton').click(handlePublish);
+
+  if (window.location.protocol === 'https:') {
+    protol = 'wss';
+    $('#port').val(443);
+  } else {
+    protol = 'ws';
+    $('#port').val(80);
+  }
 });
 
 function handleConnect(event) {
   connectionForm = connectionForm || $('#connectionForm');
   const formData = convertFormData(connectionForm.serializeArray());
 
-  const protol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-  client = mqtt.connect(`${protol}://${formData.host}:${formData.port}/mqtt`, {
+
+  client = mqtt.connect(`${protol}://${formData.host}:${formData.port}${formData.url}`, {
     username: formData.username,
     password: formData.password,
     clientId: formData.clientId

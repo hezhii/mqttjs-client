@@ -45,13 +45,17 @@
           <form id="connectionForm">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-md-5 form-group">
+                <div class="col-md-3 form-group">
                   <label for="host">Host</label>
-                  <input class="form-control" id="host" name="host" value="broker.mqttdashboard.com">
+                  <input class="form-control" id="host" name="host" value="iot.eclipse.org">
+                </div>
+                <div class="col-md-2 form-group">
+                  <label for="url">Url</label>
+                  <input class="form-control" id="url" name="url" value="/ws">
                 </div>
                 <div class="col-md-2 form-group">
                   <label for="port">Port</label>
-                  <input class="form-control" id="port" name="port" value="8000">
+                  <input class="form-control" id="port" name="port" value="80">
                 </div>
                 <div class="col-md-3 form-group">
                   <label for="clientId">ClientID</label>
@@ -169,7 +173,7 @@
                     </div>
                     <div class="col-md-4 form-group">
                       <label for="color">Color</label>
-                      <input id="color" class="form-control" name="color" value="#f00"/>
+                      <input id="color" class="form-control" name="color" value="#f00" />
                     </div>
                     <div class="col-md-4 form-group">
                       <button id="subscribeButton" class="btn btn-primary button-align">Subscribe</button>
