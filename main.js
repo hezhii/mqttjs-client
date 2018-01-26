@@ -4,6 +4,8 @@ let client, protol;
 
 const TOPIC_COLOR_MAP = {};
 
+const SUBSCRIBED_TOPICS = [];
+
 $(function () {
   colorPicker = $('#color');
   colorPicker.colorpicker();
@@ -59,6 +61,11 @@ function handleSubscribe(event) {
   } = formData;
 
   if (client) {
+    if (SUBSCRIBED_TOPICS.includes(topic)) {
+      alert('You are already subscribed to this topic!');
+      return false;
+    }
+    SUBSCRIBED_TOPICS.push(topic);
     client.subscribe(topic, { 'qos': parseInt(qos) }, function (err) {
       if (err) {
         alert(`There has some problems when subscribe topic "${formData.topic}"!\nError:${err.message}`);
@@ -92,6 +99,7 @@ function handleUnsubscribe(event) {
       if (err) {
         alert(`Unsubscribe topic: ${topic} fail!`);
       } else {
+        SUBSCRIBED_TOPICS.splice(SUBSCRIBED_TOPICS.indexOf(topic), 1);
         $target.parents('li').remove();
       }
     });
