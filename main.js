@@ -1,15 +1,13 @@
 let connectionForm, subscriptionForm, publishForm, state, messageList, colorPicker;
 
 let client, protol;
-
 const TOPIC_COLOR_MAP = {};
-
 const SUBSCRIBED_TOPICS = [];
 
 $(function () {
   colorPicker = $('#color');
   colorPicker.colorpicker();
-  $('#connectButton').click(handleConnect);
+  $('#connectButton').click(toggleConnect);
   $('#subscribeButton').click(handleSubscribe);
   $('#publishButton').click(handlePublish);
   $('#topicList').click(handleUnsubscribe);
@@ -24,29 +22,40 @@ $(function () {
   }
 });
 
-function handleConnect(event) {
-  connectionForm = connectionForm || $('#connectionForm');
-  const formData = convertFormData(connectionForm.serializeArray());
+function toggleConnect(event) {
+  if (client) {
+    client.end(true, function () {
+      state.attr('class', 'color-red');
+      state.children('span').text('disconnected');
+      $(event.target).text('Connect');
+      $('#topicList').empty();
+      SUBSCRIBED_TOPICS.length = 0;
+      client = null;
+    });
+  } else {
+    connectionForm = connectionForm || $('#connectionForm');
+    const formData = convertFormData(connectionForm.serializeArray());
 
 
-  client = mqtt.connect(`${protol}://${formData.host}:${formData.port}${formData.url}`, {
-    username: formData.username,
-    password: formData.password,
-    clientId: formData.clientId
-  });
+    client = mqtt.connect(`${protol}://${formData.host}:${formData.port}${formData.url}`, {
+      username: formData.username,
+      password: formData.password,
+      clientId: formData.clientId
+    });
 
-  client.on('connect', function () {
-    state = state || $('#state');
-    state.attr('class', 'color-green');
-    state.children('span').text('connected');
-  });
+    client.on('connect', function () {
+      state = state || $('#state');
+      state.attr('class', 'color-green');
+      state.children('span').text('connected');
+      $(event.target).text('Disconnect');
+    });
 
-  client.on('error', function (err) {
-    alert('There has some problems when create connection!\n Error is:' + err.message);
-  });
+    client.on('error', function (err) {
+      alert('There has some problems when create connection!\n Error is:' + err.message);
+    });
 
-  client.on('message', handleMessage);
-
+    client.on('message', handleMessage);
+  }
   return false;
 }
 
