@@ -1,4 +1,4 @@
-let connectionForm, subscriptionForm, publishForm, state, tbody, messageList, colorPicker;
+let connectionForm, subscriptionForm, publishForm, state, messageList, colorPicker;
 
 let client, protol;
 
@@ -10,6 +10,7 @@ $(function () {
   $('#connectButton').click(handleConnect);
   $('#subscribeButton').click(handleSubscribe);
   $('#publishButton').click(handlePublish);
+  $('#topicList').click(handleUnsubscribe);
 
   if (window.location.protocol === 'https:') {
     protol = 'wss';
@@ -62,8 +63,15 @@ function handleSubscribe(event) {
         alert(`There has some problems when subscribe topic "${formData.topic}"!\nError:${err.message}`);
       } else {
         TOPIC_COLOR_MAP[topic] = color;
-        tbody = tbody || $('tbody');
-        tbody.append(`<tr><td>${topic}</td><td><i style="background: ${color}"></i></td><td>${qos}</td></tr>`);
+        $('#topicList').append(
+          `<li class='topic-item' style='border-left-color: ${color}'>
+             <div class='content'>
+               <a class='close' data-topic='${topic}'>x</a>
+               <div class='qos'>Qos:${qos}</div>
+               <div class='topic'>${topic}</div>
+             </div>
+           </li>`
+        );
         colorPicker.colorpicker('setValue', getRandomColor());
       }
     });
@@ -72,6 +80,22 @@ function handleSubscribe(event) {
   }
 
   event.preventDefault();
+}
+
+function handleUnsubscribe(event) {
+  const target = event.target;
+  if (target.tagName === 'A') {
+    const $target = $(target);
+    const topic = $target.data('topic');
+    client.unsubscribe(topic, function (err) {
+      if (err) {
+        alert(`Unsubscribe topic: ${topic} fail!`);
+      } else {
+        $target.parents('li').remove();
+      }
+    });
+    return false;
+  }
 }
 
 function handlePublish() {
