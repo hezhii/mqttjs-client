@@ -11,6 +11,7 @@ $(function () {
   $('#subscribeButton').click(handleSubscribe);
   $('#publishButton').click(handlePublish);
   $('#topicList').click(handleUnsubscribe);
+  $('#clearMessage').click(clearMessage);
 
   if (window.location.protocol === 'https:') {
     protol = 'wss';
@@ -138,6 +139,10 @@ function handleMessage(topic, msg, packet) {
                     </div>
                   </div>
                 </li>`);
+}
+
+function clearMessage() {
+  $('#messageList').empty();
 }
 
 /**

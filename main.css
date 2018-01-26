@@ -101,3 +101,13 @@ td > i {
 .close {
   margin-right: 8px;
 }
+
+#clearMessage {
+  float: right;
+  cursor: pointer;
+  color: #c9302c;
+}
+
+#clearMessage:hover {
+  text-decoration: none;
+}
