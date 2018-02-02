@@ -37,7 +37,7 @@ function toggleConnect(event) {
     const formData = convertFormData(connectionForm.serializeArray());
 
 
-    client = mqtt.connect(`${protol}://${formData.host}:${formData.port}${formData.url}`, {
+    client = mqtt.connect(`${protol}://${formData.host}:${formData.port}${formData.path || ''}`, {
       username: formData.username,
       password: formData.password,
       clientId: formData.clientId
