@@ -40,7 +40,8 @@ function toggleConnect(event) {
     client = mqtt.connect(`${protol}://${formData.host}:${formData.port}${formData.path || ''}`, {
       username: formData.username,
       password: formData.password,
-      clientId: formData.clientId
+      clientId: formData.clientId,
+      keepalive: formData.keepalive && parseInt(formData.keepalive),
     });
 
     client.on('connect', function () {
